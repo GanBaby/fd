@@ -1,0 +1,21 @@
+server:
+  port: 80
+
+
+############################### spring #####################################
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/sys_fd?characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: 123456
+    driverClassName: com.mysql.cj.jdbc.Driver
+    maxIdle: 10
+    maxWait: 10000
+    minIdle: 5
+    initialSize: 5
+
+############################### mybatisPlus #####################################
+mybatis-plus:
+  mapperLocations: classpath:/mappers/*/*Mapper.xml
+  typeAliasesPackage: com.fdbill.manage.entity

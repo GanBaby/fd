@@ -1,0 +1,64 @@
+server:
+  port: 80
+
+
+############################### spring #####################################
+spring:
+  main:
+    #当遇到相同名字时，是否允许覆盖注册
+    allow-bean-definition-overriding: true
+  aop:
+    proxy-target-class: true
+    auto: true
+  datasource:
+    druid:
+      sys:
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://localhost:3306/sys_fd?characterEncoding=utf8&serverTimezone=UTC
+        username: root
+        password: 123456
+        driverClassName: com.mysql.cj.jdbc.Driver
+      fd:
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://localhost:3306/fd?characterEncoding=utf8&serverTimezone=UTC
+        username: root
+        password: 123456
+        driverClassName: com.mysql.cj.jdbc.Driver
+      maxWait: 10000
+      minIdle: 5
+      initialSize: 5
+
+############################### mybatisPlus #####################################
+mybatis-plus:
+  mapperLocations: classpath*:/mappers/*/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.fdbill.manage.entity
+  global-config:
+    #刷新mapper 调试神器
+    db-config:
+      #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+      id-type: auto
+      #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+      field-strategy: IGNORED
+      #驼峰下划线转换
+      column-underline: true
+      #数据库大写下划线转换
+      #capital-mode: true
+      #逻辑删除配置
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+      db-type: mysql
+    refresh: true
+      #自定义填充策略接口实现
+      #meta-object-handler: com.baomidou.springboot.xxx
+      #自定义SQL注入器
+    #sql-injector: com.baomidou.springboot.xxx
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+
+  ############################### 日志 #####################################
+logging:
+  level:
+    com.fdbill.manage.mapper : debug
