@@ -25,6 +25,16 @@ public class JsonUtil{
     }
 
     /**
+     * 对象转map
+     * @param obj
+     * @return
+     */
+    public static Map ObjectToMap(Object obj){
+        String objStr = ObjectTojson(obj);
+        return jsonToObject(objStr,Map.class);
+    }
+
+    /**
      * json转对象
      * @param str
      * @param clazz

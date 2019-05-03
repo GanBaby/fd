@@ -23,6 +23,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Resource
     private UserMapper userMapper;
 
+    /**
+     * 用户登陆
+     * @param name
+     * @param password
+     * @return
+     */
+    public User login(String name,String password){
+        return userMapper.login(name,password);
+    };
+
     public List<User> selectListObj(Map map){
         return userMapper.selectListObj(map);
     };

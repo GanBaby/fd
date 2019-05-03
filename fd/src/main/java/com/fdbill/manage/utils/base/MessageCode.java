@@ -21,6 +21,8 @@ public enum MessageCode {
     /** 没有登录 */
     NOT_LOGIN("600", "没有登录"),
 
+    FAIL_LOGIN("601","登录失败"),
+
     /** 发生异常 */
     EXCEPTION("401", "发生异常"),
 

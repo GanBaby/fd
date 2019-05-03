@@ -16,6 +16,13 @@ import java.util.Map;
  */
 public interface IUserService extends IService<User> {
 
+    /**
+     * 用户登陆
+     * @param name
+     * @param password
+     * @return
+     */
+    User login(String name,String password);
 
     List<User>  selectListObj(Map map);
 

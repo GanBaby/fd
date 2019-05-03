@@ -25,9 +25,6 @@
 		FROM
 		fd_bill
 		WHERE 1=1
-
-			AND detail LIKE CONCAT('%',#{detail},'%')
-
 	</select>
 
 </mapper>

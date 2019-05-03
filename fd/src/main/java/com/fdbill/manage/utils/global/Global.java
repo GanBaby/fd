@@ -5,10 +5,5 @@ package com.fdbill.manage.utils.global;
  */
 public interface Global {
 
-    public static final String OK = "ok";
-    public static final String ERROR = "error";
-    public static final String EXCEPTION = "exception";
-    public static final String NOT_LOGIN = "notlogin";
-    public static final int PAGESIZE = 5;
 
 }

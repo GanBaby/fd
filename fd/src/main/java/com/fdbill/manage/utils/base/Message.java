@@ -9,30 +9,30 @@ public class Message {
     //返回的消息状态对象
     private String code;
     //结果信息
-    private String message;
+    private String msg;
     //结果内容
     private Object data;
 
     /**
      * 自定义消息时使用的构造
      * @param messageCode
-     * @param message
+     * @param msg
      * @param data
      */
-    public Message(MessageCode messageCode, Object data, String message) {
+    public Message(MessageCode messageCode, Object data, String msg) {
         this.code = messageCode.val();
         this.data = data;
-        this.message = message;
+        this.msg = msg;
     }
 
     /**
      * 自定义消息时使用的构造
      * @param messageCode
-     * @param message
+     * @param msg
      */
-    public Message(MessageCode messageCode, String message) {
+    public Message(MessageCode messageCode, String msg) {
         this.code = messageCode.val();
-        this.message = message;
+        this.msg = msg;
     }
 
     /**
@@ -41,7 +41,7 @@ public class Message {
      */
     public Message(MessageCode messageCode, Object data) {
         this.code = messageCode.val();
-        this.message = messageCode.msg();
+        this.msg = messageCode.msg();
         this.data = data;
     }
 
@@ -51,73 +51,7 @@ public class Message {
      */
     public Message(MessageCode messageCode) {
         this.code = messageCode.val();
-        this.message = messageCode.msg();
-    }
-
-
-    /**
-     * 错误时返回默认信息
-     * @param messageCode
-     * @return
-     */
-    public Message renderError(MessageCode messageCode)
-    {
-        return new Message(messageCode);
-    }
-
-    /**
-     * 错误时返回自定义的消息
-     * @param messageCode
-     * @param message
-     * @return
-     */
-    public Message renderError(MessageCode messageCode,String message)
-    {
-        return new Message(messageCode, message);
-    }
-
-    /**
-     * 异常时返回的消息
-     * @param e
-     * @return
-     */
-    public Message renderException(Exception e)
-    {
-        e.printStackTrace();
-        return new Message(MessageCode.EXCEPTION, e.getMessage());
-
-    }
-
-    /**
-     * 成功，默认消息无数据
-     * @return
-     */
-    public Message renderSuccess(){
-        return new Message(MessageCode.SUCCESS);
-    }
-
-    /**
-     * 成功，默认消息有数据
-     * @return
-     */
-    public Message renderSuccess(Object data){
-        return new Message(MessageCode.SUCCESS,data);
-    }
-
-    /**
-     * 成功，自定义消息有数据
-     * @return
-     */
-    public Message renderSuccess(Object data,String message){
-        return new Message(MessageCode.SUCCESS,data,message);
-    }
-
-    /**
-     * 成功，自定义消息无数据
-     * @return
-     */
-    public Message renderSuccess(String message){
-        return new Message(MessageCode.SUCCESS,message);
+        this.msg = messageCode.msg();
     }
 
 
@@ -129,12 +63,12 @@ public class Message {
         this.code = code;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
     public Object getData() {

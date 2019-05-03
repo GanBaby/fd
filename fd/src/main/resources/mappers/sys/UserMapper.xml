@@ -18,8 +18,20 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, name, password, phone, head_phone AS headPhone, role_type AS roleType, status, create_time AS createTime, order_num AS orderNum, del_flag AS delFlag
+        id, name, password, phone, head_phone AS headPhone,
+        role_type AS roleType, status, create_time AS createTime,
+         order_num AS orderNum, del_flag AS delFlag
     </sql>
+
+	<select id="login" resultMap="BaseResultMap" parameterType="java.lang.String">
+		SELECT
+        id, name, phone, head_phone, role_type,
+         status, create_time, order_num, del_flag
+		FROM
+		sys_user
+		WHERE
+		name=#{name} AND password=md5(#{password})
+	</select>
 
 	<select id="selectListObj" resultMap="BaseResultMap">
 		SELECT <include refid="Base_Column_List" />

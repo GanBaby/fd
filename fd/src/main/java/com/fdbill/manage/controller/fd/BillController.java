@@ -3,6 +3,7 @@ package com.fdbill.manage.controller.fd;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.fdbill.manage.entity.fd.Bill;
 import com.fdbill.manage.service.fd.IBillService;
+import com.fdbill.manage.utils.base.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +24,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/bill")
-public class BillController {
+public class BillController extends BaseController {
 
     @Autowired
     private IBillService billService;
@@ -35,8 +36,12 @@ public class BillController {
      */
     @PostMapping(value="/selectList")
     public Object selectList(@RequestParam Map<String,String> param){
-        List<Bill> list = billService.selectList(param);
-        return list;
+        try{
+            List<Bill> list = billService.selectList(param);
+            return renderSuccess(list,"成功了");
+        }catch(Exception e){
+            return renderException(e);
+        }
     }
 
 }
