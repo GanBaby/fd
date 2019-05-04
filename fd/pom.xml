@@ -101,7 +101,12 @@
             <version>2.6.1</version>
         </dependency>
 
-
+        <!--Java基本对象方法工具类包-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
+        </dependency>
 
     </dependencies>
 

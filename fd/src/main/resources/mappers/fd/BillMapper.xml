@@ -20,6 +20,19 @@
         id, income, outcome, proft, detail, create_user_id AS createUserId, create_time AS createTime, order_num AS orderNum, del_flag AS delFlag
     </sql>
 
+	<select id="selectLastYearIncome" resultType="java.util.Map" parameterType="java.lang.String">
+		SELECT DATE_FORMAT(create_time,'%Y-%m') date,SUM(income) income
+		FROM
+		fd_bill
+		WHERE
+		unix_timestamp(create_time) &gt;= unix_timestamp(#{beginDate,jdbcType=VARCHAR})
+		AND
+		unix_timestamp(create_time) &lt;= unix_timestamp(#{endDate,jdbcType=VARCHAR})
+		AND
+		create_user_id=#{userId}
+		GROUP BY DATE_FORMAT(create_time,'%Y-%m')
+	</select>
+
 	<select id="selectByMap" resultMap="BaseResultMap" parameterType="java.lang.String">
 		SELECT <include refid="Base_Column_List" />
 		FROM

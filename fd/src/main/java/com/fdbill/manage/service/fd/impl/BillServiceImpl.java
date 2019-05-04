@@ -10,6 +10,7 @@ import com.fdbill.manage.service.fd.IBillService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +27,18 @@ public class BillServiceImpl extends ServiceImpl<BillMapper, Bill> implements IB
 
     @Resource
     private BillMapper billMapper;
+
+    /**
+     * 查询最近一年的收入
+     * @param beginDate
+     * @param endDate
+     * @param userId
+     * @return
+     */
+    @DataSource(DataSourceEnum.FD)
+    public List<Map<String,Object>> selectLastYearIncome(String beginDate, String endDate, String userId){
+        return billMapper.selectLastYearIncome(beginDate,endDate,userId);
+    };
 
     @DataSource(DataSourceEnum.FD)
     public List<Bill> selectList(Map map){
