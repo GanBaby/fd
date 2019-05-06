@@ -30,6 +30,4 @@ public interface BillMapper extends BaseMapper<Bill> {
                                                   @Param(value="endDate")String endDate,
                                                   @Param(value="userId")String userId);
 
-    List<Bill> selectByMap(Map map);
-
 }

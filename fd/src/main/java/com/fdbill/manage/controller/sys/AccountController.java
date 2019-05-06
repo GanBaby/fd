@@ -3,6 +3,7 @@ package com.fdbill.manage.controller.sys;
 import com.fdbill.manage.entity.sys.User;
 import com.fdbill.manage.service.sys.IUserService;
 import com.fdbill.manage.utils.base.BaseController;
+import com.fdbill.manage.utils.base.Message;
 import com.fdbill.manage.utils.base.MessageCode;
 import com.fdbill.manage.utils.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class AccountController extends BaseController {
      * @return
      */
     @PostMapping(value="/login")
-    public Object selectListObj(@RequestParam Map<String,String> param){
+    public Message selectListObj(@RequestParam Map<String,String> param){
         try{
             String name = param.get("userName");
             String password = param.get("password");
@@ -55,6 +56,22 @@ public class AccountController extends BaseController {
             map.put("roleType",user.getRoleType());
             map.put("user",user);
             return renderSuccess(map);
+        }catch(Exception e){
+            return renderException(e);
+        }
+    }
+
+    /**
+     * 退出登录
+     * @param param
+     * @return
+     */
+    @PostMapping(value="/loginOut")
+    public Message loginOut(@RequestParam Map<String,String> param){
+        try{
+            //清空session中的user
+            setUser(null);
+            return renderSuccess();
         }catch(Exception e){
             return renderException(e);
         }

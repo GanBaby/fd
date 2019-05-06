@@ -1,6 +1,7 @@
 package com.fdbill.manage.service.fd.impl;
 
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.fdbill.manage.config.dataSourceConfig.DataSource;
 import com.fdbill.manage.config.dataSourceConfig.DataSourceEnum;
@@ -40,6 +41,11 @@ public class BillServiceImpl extends ServiceImpl<BillMapper, Bill> implements IB
         return billMapper.selectLastYearIncome(beginDate,endDate,userId);
     };
 
+    /**
+     * 获取当前用户的所有账单列表
+     * @param map
+     * @return
+     */
     @DataSource(DataSourceEnum.FD)
     public List<Bill> selectList(Map map){
         return billMapper.selectByMap(map);

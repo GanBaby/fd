@@ -1,6 +1,8 @@
 package com.fdbill.manage.controller.fd;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.fdbill.manage.config.dataSourceConfig.DataSource;
+import com.fdbill.manage.config.dataSourceConfig.DataSourceEnum;
 import com.fdbill.manage.entity.fd.Bill;
 import com.fdbill.manage.entity.sys.User;
 import com.fdbill.manage.service.fd.IBillService;
@@ -33,7 +35,21 @@ public class BillController extends BaseController {
     @Autowired
     private IBillService billService;
 
-
+    /**
+     * 获取当前用户的所有账单信息
+     * @param param
+     * @return 实体类列表
+     */
+    @PostMapping(value="/selectList")
+    public Object selectList(@RequestParam Map<String,Object> param){
+        try{
+            param.put("create_user_id",getUser().getId());
+            List<Bill> list = billService.selectList(param);
+            return renderSuccess(list);
+        }catch(Exception e){
+            return renderException(e);
+        }
+    }
 
     /**
      * 查询最近一年的收入
@@ -56,19 +72,6 @@ public class BillController extends BaseController {
         }
     }
 
-    /**
-     * 查询所有的账单列表
-     * @param param
-     * @return 实体类列表
-     */
-    @PostMapping(value="/selectList")
-    public Object selectList(@RequestParam Map<String,String> param){
-        try{
-            List<Bill> list = billService.selectList(param);
-            return renderSuccess(list,"成功了");
-        }catch(Exception e){
-            return renderException(e);
-        }
-    }
+
 
 }

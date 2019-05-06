@@ -19,6 +19,13 @@ import java.util.Map;
 public interface IBillService extends IService<Bill> {
 
     /**
+     * 获取当前用户的所有账单列表
+     * @param map
+     * @return
+     */
+    List<Bill> selectList(Map map);
+
+    /**
      * 查询最近一年的收入
      * @param beginDate
      * @param endDate
@@ -27,5 +34,4 @@ public interface IBillService extends IService<Bill> {
      */
     List<Map<String,Object>> selectLastYearIncome(String beginDate,String endDate,String userId);
 
-    List<Bill> selectList(Map map);
 }
