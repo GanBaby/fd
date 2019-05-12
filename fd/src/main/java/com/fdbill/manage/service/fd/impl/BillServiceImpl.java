@@ -37,8 +37,8 @@ public class BillServiceImpl extends ServiceImpl<BillMapper, Bill> implements IB
      * @return
      */
     @DataSource(DataSourceEnum.FD)
-    public List<Map<String,Object>> selectLastYearIncome(String beginDate, String endDate, String userId){
-        return billMapper.selectLastYearIncome(beginDate,endDate,userId);
+    public List<Map<String,Object>> selectLastYearStatDate(String beginDate, String endDate, String userId){
+        return billMapper.selectLastYearStatDate(beginDate,endDate,userId);
     };
 
     /**

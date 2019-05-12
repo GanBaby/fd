@@ -32,6 +32,6 @@ public interface IBillService extends IService<Bill> {
      * @param userId
      * @return
      */
-    List<Map<String,Object>> selectLastYearIncome(String beginDate,String endDate,String userId);
+    List<Map<String,Object>> selectLastYearStatDate(String beginDate,String endDate,String userId);
 
 }

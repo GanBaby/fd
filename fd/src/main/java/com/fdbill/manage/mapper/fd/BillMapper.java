@@ -26,7 +26,7 @@ public interface BillMapper extends BaseMapper<Bill> {
      * @param userId
      * @return
      */
-    List<Map<String,Object>> selectLastYearIncome(@Param(value="beginDate") String beginDate,
+    List<Map<String,Object>> selectLastYearStatDate(@Param(value="beginDate") String beginDate,
                                                   @Param(value="endDate")String endDate,
                                                   @Param(value="userId")String userId);
 

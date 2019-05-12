@@ -56,8 +56,8 @@ public class BillController extends BaseController {
      * @param param
      * @return
      */
-    @PostMapping(value="/selectLastYearIncome")
-    public Message selectLastYearIncome(@RequestParam Map<String,String> param){
+    @PostMapping(value="/selectLastYearStatDate")
+    public Message selectLastYearStatDate(@RequestParam Map<String,String> param){
         try{
             Date date = new Date();
             //获取当前月的最后一天最后一秒的Date
@@ -65,7 +65,7 @@ public class BillController extends BaseController {
             //获取去年下个月的第一天的第一秒的Date
             String beginDate = DateUtils.formatDateTime(DateUtils.getDayStart(DateUtils.getFirstDayOfMonth(DateUtils.addMonth(date, -11))));
             User user = getUser();
-            List<Map<String,Object>> list = billService.selectLastYearIncome(beginDate,endDate,user.getId());
+            List<Map<String,Object>> list = billService.selectLastYearStatDate(beginDate,endDate,user.getId());
             return renderSuccess(list);
         }catch(Exception e){
             return renderException(e);

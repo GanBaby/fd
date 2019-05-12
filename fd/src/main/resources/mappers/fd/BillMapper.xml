@@ -20,8 +20,8 @@
         id, income, outcome, proft, detail, create_user_id AS createUserId, create_time AS createTime, order_num AS orderNum, del_flag AS delFlag
     </sql>
 
-	<select id="selectLastYearIncome" resultType="java.util.Map" parameterType="java.lang.String">
-		SELECT DATE_FORMAT(create_time,'%Y-%m') date,SUM(income) income
+	<select id="selectLastYearStatDate" resultType="java.util.Map" parameterType="java.lang.String">
+		SELECT DATE_FORMAT(create_time,'%Y-%m') date,SUM(income) income,SUM(outcome) outcome,SUM(proft) proft
 		FROM
 		fd_bill
 		WHERE

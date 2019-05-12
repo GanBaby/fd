@@ -5,6 +5,7 @@ import com.fdbill.manage.service.sys.IUserService;
 import com.fdbill.manage.utils.base.BaseController;
 import com.fdbill.manage.utils.base.Message;
 import com.fdbill.manage.utils.base.MessageCode;
+import com.fdbill.manage.utils.util.RequestUtil;
 import com.fdbill.manage.utils.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -34,12 +36,14 @@ public class AccountController extends BaseController {
      * @return
      */
     @PostMapping(value="/login")
-    public Message selectListObj(@RequestParam Map<String,String> param){
+    public Message selectListObj(HttpServletRequest request, @RequestParam Map<String,String> param){
         try{
             String name = param.get("userName");
             String password = param.get("password");
+            String ip = param.get("ip");
             Map<String,Object> map = new ConcurrentHashMap();
-            if (StringUtils.isEmpty(name)&&StringUtils.isEmpty(password)){
+            if (StringUtils.isEmpty(name)&&StringUtils.isEmpty(password)
+                    &&StringUtils.isEmpty(ip)){
                 map.put("status","error");
                 map.put("roleType",-1);
                 return renderError(MessageCode.FAIL_LOGIN,map);
@@ -51,7 +55,10 @@ public class AccountController extends BaseController {
                 map.put("roleType",-1);
                 return renderError(MessageCode.FAIL_LOGIN,map);
             }
+            //获取天气信息
+            Map<String, Object> weatherData = RequestUtil.getWeatherData(ip);
             setUser(user);
+            map.put("weatherData",weatherData);
             map.put("status","ok");
             map.put("roleType",user.getRoleType());
             map.put("user",user);
