@@ -1,10 +1,16 @@
 package com.fdbill.manage;
 
+import com.fdbill.manage.app.Application;
 import com.fdbill.manage.entity.sys.User;
+import com.fdbill.manage.service.fd.IBillItemClassService;
 import com.fdbill.manage.utils.util.DateUtils;
 import com.fdbill.manage.utils.util.JsonUtil;
 import com.fdbill.manage.utils.util.RequestUtil;
 import com.fdbill.manage.utils.util.Utils;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
 import java.util.*;
@@ -12,23 +18,17 @@ import java.util.*;
 /**
  * Created by 甘银涛 on 2019/5/3 21:57
  */
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = Application.class)
 public class Test {
 
-    public static void main(String[] args){
-//        String cityUrl = "http://ip.taobao.com/service/getIpInfo.php?ip=114.89.70.57";
-//        String url="https://restapi.amap.com/v3/weather/weatherInfo?key=acf9ec011bc29f3ea6f58c34a1fbbe25&city=310000&extensions=all";
-//        try{
-//            String cityData = RequestUtil.getData(cityUrl);
-//            Map map = JsonUtil.jsonToObject(cityData, Map.class);
-//
-//            String s = ((Map<String, String>) map.get("forecasts")).get("adcode");
-//
-//            RequestUtil.getData()
-//            System.out.printf(data);
-//        }catch (Exception e){
-//            System.out.printf(e.getMessage());
-//        }
+    @Autowired
+    private IBillItemClassService billItemClassService;
 
+    @org.junit.Test
+    public void test(){
+        Map<String, Object> stringObjectMap = billItemClassService.selectList(new HashMap());
+        System.out.printf("123");
     }
 
 }

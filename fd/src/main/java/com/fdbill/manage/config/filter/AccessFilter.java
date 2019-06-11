@@ -42,7 +42,7 @@ public class AccessFilter implements Filter
         if (user == null)
         {
             String currentURL = request.getRequestURI();
-            if ((!currentURL.contains("/login")))
+            if (!currentURL.contains("/login"))
             {
                 RequestUtil.commonOut(response,new Message(MessageCode.NOT_LOGIN));
                 return;

@@ -5,5 +5,10 @@ package com.fdbill.manage.utils.global;
  */
 public interface Global {
 
+    //收入分类类型
+    public final int  INCOME_TYPE = 1;
+
+    //支出分类类型
+    public final int  OUTCOME_TYPE = 0;
 
 }

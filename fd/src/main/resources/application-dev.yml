@@ -7,6 +7,11 @@ spring:
   main:
     #当遇到相同名字时，是否允许覆盖注册
     allow-bean-definition-overriding: true
+  mvc:
+    static-path-pattern: /**
+  resources:
+    # 静态资源的默认访问路径前缀
+    static-locations: classpath:/static
   aop:
     proxy-target-class: true
     auto: true
@@ -14,13 +19,13 @@ spring:
     druid:
       sys:
         type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://localhost:3306/sys_fd?characterEncoding=utf8&serverTimezone=UTC
+        url: jdbc:mysql://106.12.141.207:3306/sys_fd?characterEncoding=utf8&serverTimezone=UTC
         username: root
         password: 123456
         driverClassName: com.mysql.cj.jdbc.Driver
       fd:
         type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://localhost:3306/fd?characterEncoding=utf8&serverTimezone=UTC
+        url: jdbc:mysql://106.12.141.207:3306/fd?characterEncoding=utf8&serverTimezone=UTC
         username: root
         password: 123456
         driverClassName: com.mysql.cj.jdbc.Driver
@@ -58,7 +63,11 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     cache-enabled: false
 
-  ############################### 日志 #####################################
+############################### 日志 #####################################
 logging:
+  # 默认日志路径文件名
+  file: log/plat.log
+  file.max-size: 1MB
   level:
+    #在控制台打印sql语句com.wulianwang.manage.mapper是mapper所在的路径
     com.fdbill.manage.mapper : debug

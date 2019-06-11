@@ -53,9 +53,9 @@
 
         <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.apache.velocity/velocity &ndash;&gt;-->
         <!--<dependency>-->
-            <!--<groupId>org.apache.velocity</groupId>-->
-            <!--<artifactId>velocity</artifactId>-->
-            <!--<version>1.7</version>-->
+        <!--<groupId>org.apache.velocity</groupId>-->
+        <!--<artifactId>velocity</artifactId>-->
+        <!--<version>1.7</version>-->
         <!--</dependency>-->
 
         <!--数据库连接jdbc依赖-->
@@ -110,5 +110,12 @@
 
     </dependencies>
 
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
