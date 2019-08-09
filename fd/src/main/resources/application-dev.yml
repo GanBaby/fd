@@ -1,5 +1,5 @@
 server:
-  port: 80
+  port: 9001
 
 
 ############################### spring #####################################
@@ -19,13 +19,13 @@ spring:
     druid:
       sys:
         type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://106.12.141.207:3306/sys_fd?characterEncoding=utf8&serverTimezone=UTC
+        url: jdbc:mysql://106.13.24.236:3306/sys_fd?characterEncoding=utf8&serverTimezone=UTC
         username: root
         password: 123456
         driverClassName: com.mysql.cj.jdbc.Driver
       fd:
         type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://106.12.141.207:3306/fd?characterEncoding=utf8&serverTimezone=UTC
+        url: jdbc:mysql://106.13.24.236:3306/fd?characterEncoding=utf8&serverTimezone=UTC
         username: root
         password: 123456
         driverClassName: com.mysql.cj.jdbc.Driver

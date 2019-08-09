@@ -1,8 +1,5 @@
 package com.fdbill.manage.controller.fd;
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.fdbill.manage.config.dataSourceConfig.DataSource;
-import com.fdbill.manage.config.dataSourceConfig.DataSourceEnum;
 import com.fdbill.manage.entity.fd.Bill;
 import com.fdbill.manage.entity.sys.User;
 import com.fdbill.manage.service.fd.IBillService;
@@ -10,7 +7,6 @@ import com.fdbill.manage.utils.base.BaseController;
 import com.fdbill.manage.utils.base.Message;
 import com.fdbill.manage.utils.util.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
