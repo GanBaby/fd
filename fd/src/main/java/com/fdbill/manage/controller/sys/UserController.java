@@ -3,11 +3,12 @@ package com.fdbill.manage.controller.sys;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.fdbill.manage.entity.sys.User;
-import com.fdbill.manage.service.shiro.PasswordHash;
 import com.fdbill.manage.service.sys.IUserService;
 import com.fdbill.manage.utils.base.BaseController;
 import com.fdbill.manage.utils.base.MessageCode;
 import com.fdbill.manage.utils.util.Utils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -29,9 +30,6 @@ public class UserController extends BaseController {
 
     @Autowired
     private IUserService userService;
-
-    @Autowired
-    private PasswordHash passwordHash;
 
 
     /**
@@ -75,6 +73,7 @@ public class UserController extends BaseController {
      */
     @PostMapping(value="/addUser")
     public Object addUser(@RequestParam Map<String,String> param){
+        User principal = (User) SecurityUtils.getSubject().getPrincipal();
         String name = param.get("name");
         String password = param.get("password");
         String phone = param.get("phone");
@@ -83,11 +82,11 @@ public class UserController extends BaseController {
         }
         try {
             String salt = Utils.genUUID();
-            password = passwordHash.toHex(password,salt);
+            SimpleHash simpleHash = new SimpleHash("MD5", password, salt, 20);
             User user = new User();
             user.setInit();
             user.setPhone(phone);
-            user.setPassword(password);
+            user.setPassword(simpleHash.toHex());
             user.setHeadPhone("https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png");
             user.setName(name);
             user.setSalt(salt);

@@ -1,7 +1,7 @@
 package com.fdbill.manage.config.shiro;
 
 
-import com.fdbill.manage.service.shiro.FdRealm;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -32,6 +32,8 @@ public class ShiroConfig {
     @Bean
     public FdRealm myShiroRealm() {
         FdRealm ddRealm = new FdRealm();
+        //设置加密算法
+        ddRealm.setCredentialsMatcher(credentialsMatcher());
         return ddRealm;
     }
 
@@ -51,8 +53,13 @@ public class ShiroConfig {
         Map<String, String> map = new HashMap<>();
         //登出
         map.put("/logout", "logout");
+
+        // anon  不需要认证
+        // authc 需要认证
+        // user  验证通过或RememberMe登录的都可以
         //对所有用户认证
         map.put("/**", "authc");
+        map.put("/api/**","anon");
         //登录
         shiroFilterFactoryBean.setLoginUrl("/account/login");
         //首页
@@ -70,4 +77,18 @@ public class ShiroConfig {
         authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
         return authorizationAttributeSourceAdvisor;
     }
+
+    @Bean("credentialsMatcher")
+    public HashedCredentialsMatcher credentialsMatcher(){
+        HashedCredentialsMatcher credentialsMatcher = new HashedCredentialsMatcher();
+        //加密算法的名字，也可以设置MD5等其他加密算法名字
+        credentialsMatcher.setHashAlgorithmName("MD5");
+        //加密次数
+        credentialsMatcher.setHashIterations(20);
+        //加密为哈希
+        credentialsMatcher.setStoredCredentialsHexEncoded(true);
+
+        return credentialsMatcher;
+    }
+
 }
