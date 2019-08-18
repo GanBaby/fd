@@ -21,8 +21,20 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 /**
  * 画制定logo和制定描述的二维码
  *
- * @author songyz
+ 所需依赖
+ <dependency>
+ <groupId>com.google.zxing</groupId>
+ <artifactId>core</artifactId>
+ <version>3.2.1</version>
+ </dependency>
+ <dependency>
+ <groupId>com.google.zxing</groupId>
+ <artifactId>javase</artifactId>
+ <version>3.2.1</version>
+ </dependency>
+
  */
+
 public class QrCode {
     private static final int QRCOLOR = 0xFF000000; // 默认是黑色
     private static final int BGWHITE = 0xFFFFFFFF; // 背景颜色
@@ -42,8 +54,8 @@ public class QrCode {
     };
 
     public static void main(String[] args) throws WriterException {
-        File logoFile = new File("D://QrCode/logo3.png");
-        File QrCodeFile = new File("D://QrCode/05.png");
+        File logoFile = new File("D://QrCode/logo3.png");//logo图片
+        File QrCodeFile = new File("D://QrCode/05.png");//生成后的图片
         String url = "http://ganyintao.top/";
         String note = "在下老甘";
         drawLogoQRCode(logoFile, QrCodeFile, url, note);

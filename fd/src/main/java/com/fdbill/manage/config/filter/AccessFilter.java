@@ -35,19 +35,19 @@ public class AccessFilter implements Filter
         response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
         response.setHeader("Access-Control-Allow-Credentials", "true");
 
-        HttpSession session = request.getSession();
-        User user = UserUtil.getUser(session);
-        log.info("request url : " + request.getRequestURI());
-
-        if (user == null)
-        {
-            String currentURL = request.getRequestURI();
-            if (!currentURL.contains("/login"))
-            {
-                RequestUtil.commonOut(response,new Message(MessageCode.NOT_LOGIN));
-                return;
-            }
-        }
+//        HttpSession session = request.getSession();
+//        User user = UserUtil.getUser(session);
+//        log.info("request url : " + request.getRequestURI());
+//
+//        if (user == null)
+//        {
+//            String currentURL = request.getRequestURI();
+//            if (!currentURL.contains("/login"))
+//            {
+//                RequestUtil.commonOut(response,new Message(MessageCode.NOT_LOGIN));
+//                return;
+//            }
+//        }
         chain.doFilter(req, res);
     }
 

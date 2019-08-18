@@ -4,6 +4,9 @@ import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.fdbill.manage.utils.global.UserGlobal;
+import com.fdbill.manage.utils.util.Utils;
+
 import java.io.Serializable;
 
 /**
@@ -31,6 +34,12 @@ public class User extends Model<User> {
      * 密码
      */
 	private String password;
+
+	/**
+	 * 加密盐
+	 */
+	private String salt;
+
     /**
      * 电话号码
      */
@@ -44,11 +53,11 @@ public class User extends Model<User> {
      * 用户角色类型（1.用户 0.管理员）
      */
 	@TableField("role_type")
-	private Integer roleType;
+	private String roleType;
     /**
      * 用户状态(1.正常 0封禁 -1.删除)
      */
-	private Integer status;
+	private String status;
     /**
      * 创建时间
      */
@@ -63,8 +72,14 @@ public class User extends Model<User> {
      * 删除标记(0.删除 1正常)
      */
 	@TableField("del_flag")
-	private Integer delFlag;
+	private String delFlag;
 
+	public void setInit(){
+		this.setId(Utils.genUUID());
+		this.setStatus(UserGlobal.USABLE);
+		this.setDelFlag(UserGlobal.NOT_DELETED);
+		this.setCreateTime(new Date());
+	}
 
 	public String getId() {
 		return id;
@@ -111,20 +126,20 @@ public class User extends Model<User> {
 		return this;
 	}
 
-	public Integer getRoleType() {
+	public String getRoleType() {
 		return roleType;
 	}
 
-	public User setRoleType(Integer roleType) {
+	public User setRoleType(String roleType) {
 		this.roleType = roleType;
 		return this;
 	}
 
-	public Integer getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public User setStatus(Integer status) {
+	public User setStatus(String status) {
 		this.status = status;
 		return this;
 	}
@@ -147,13 +162,21 @@ public class User extends Model<User> {
 		return this;
 	}
 
-	public Integer getDelFlag() {
+	public String getDelFlag() {
 		return delFlag;
 	}
 
-	public User setDelFlag(Integer delFlag) {
+	public User setDelFlag(String delFlag) {
 		this.delFlag = delFlag;
 		return this;
+	}
+
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 
 	@Override

@@ -39,7 +39,7 @@ public class BillController extends BaseController {
     @PostMapping(value="/selectList")
     public Object selectList(@RequestParam Map<String,Object> param){
         try{
-            param.put("create_user_id",getUser().getId());
+//            param.put("create_user_id",getUser().getId());
             List<Bill> list = billService.selectList(param);
             return renderSuccess(list);
         }catch(Exception e){

@@ -62,7 +62,11 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
-
+############################### shiro #####################################
+shiro:
+  #密码加密 1次md5,增强密码可修改此处
+  algorithmName: md5
+  hashIterations: 1
 ############################### 日志 #####################################
 logging:
   # 默认日志路径文件名

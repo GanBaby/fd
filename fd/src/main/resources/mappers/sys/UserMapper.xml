@@ -7,6 +7,7 @@
 		<id column="id" property="id" />
 		<result column="name" property="name" />
 		<result column="password" property="password" />
+		<result column="salt" property="salt" />
 		<result column="phone" property="phone" />
 		<result column="head_phone" property="headPhone" />
 		<result column="role_type" property="roleType" />
@@ -18,7 +19,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, name, password, phone, head_phone AS headPhone,
+        id, name, password,salt, phone, head_phone AS headPhone,
         role_type AS roleType, status, create_time AS createTime,
          order_num AS orderNum, del_flag AS delFlag
     </sql>
