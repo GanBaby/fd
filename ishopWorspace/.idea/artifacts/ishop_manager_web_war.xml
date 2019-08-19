@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ishop-manager-web:war">
+    <output-path>$PROJECT_DIR$/ishop/ishop-manager/ishop-manager-web/target</output-path>
+    <root id="archive" name="ishop-manager-web.war">
+      <element id="artifact" artifact-name="ishop-manager-web:war exploded" />
+    </root>
+  </artifact>
+</component>

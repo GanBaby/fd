@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ishop/ishop.iml" filepath="$PROJECT_DIR$/ishop/ishop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ishop/ishop-codegen/ishop-codegen.iml" filepath="$PROJECT_DIR$/ishop/ishop-codegen/ishop-codegen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ishop/ishop-common/ishop-common.iml" filepath="$PROJECT_DIR$/ishop/ishop-common/ishop-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ishop/ishop-manager/ishop-manager.iml" filepath="$PROJECT_DIR$/ishop/ishop-manager/ishop-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ishop/ishop-manager/ishop-manager-mapper/ishop-manager-mapper.iml" filepath="$PROJECT_DIR$/ishop/ishop-manager/ishop-manager-mapper/ishop-manager-mapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ishop/ishop-manager/ishop-manager-pojo/ishop-manager-pojo.iml" filepath="$PROJECT_DIR$/ishop/ishop-manager/ishop-manager-pojo/ishop-manager-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ishop/ishop-manager/ishop-manager-service/ishop-manager-service.iml" filepath="$PROJECT_DIR$/ishop/ishop-manager/ishop-manager-service/ishop-manager-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ishop/ishop-manager/ishop-manager-web/ishop-manager-web.iml" filepath="$PROJECT_DIR$/ishop/ishop-manager/ishop-manager-web/ishop-manager-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ishopWorspace.iml" filepath="$PROJECT_DIR$/.idea/ishopWorspace.iml" />
+    </modules>
+  </component>
+</project>
